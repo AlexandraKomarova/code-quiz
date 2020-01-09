@@ -1,18 +1,85 @@
-var time = 0;
-var sscore = 0;
-var startQuiz = document.querySelector("start")
+var timer = document.querySelector("#timer");
+var startButton = document.querySelector(".start-button");
+var question = document.querySelector(".title");
+var optionsField = document.querySelector(".options-field");
+var quizTime = 3 
+var questionObjectChoices = 0
+
+
+function setTimer(){
+    timer.textContent = quizTime;
+    var timerInterval = setInterval(function(){
+        timer.textContent = quizTime--;
+
+        if (quizTime === 0) {
+            clearInterval(timerInterval);
+            timer.textContent = "0";
+        }
+    }, 1000)
+}
+
+
+function displayQuestions (){
+    question.textContent = questions[questionObjectChoices].title;
+    displayChoices();
+    }
+    function displayChoices(){
+        for (var i = 0; i < questions[questionObjectChoices].choices.length; i++){
+            var option = document.createElement("p");
+            option.classList.add('question-option');
+            option.textContent = questions[questionObjectChoices].choices[i];
+            optionsField.appendChild(option);
+        }
+    var questionOptions = document.querySelector(".question-option");
+
+    questionOptions.addEventListener("click", function() {
+        questionObjectChoices++
+        question.textContent = questions[questionObjectChoices].title;
+        optionsField.textContent = ""
+        displayChoices();
+    });
+}
+
+startButton.addEventListener ("click", function(){
+    setTimer();
+    displayQuestions();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // create array that has objects as questions
 
-// on click start the game, set the time to 30, then decrement 
-startQuiz.addEventListener("click", function(){
-    event.preventDefault();
-    var time = 30;
-    // select the element where time is displayed and display it display that time
-    time.textContent = time;
-});
 
-// set timer with set interval
-// create an array of objects for questions
+
+
 
 // title, choices, answer
 

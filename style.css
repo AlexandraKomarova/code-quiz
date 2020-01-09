@@ -8,7 +8,7 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
-.start {
+.start-button {
     grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
@@ -17,39 +17,107 @@ body {
     border-radius: 15px;
 }
 
-.questions {
+.start-button:hover, .view-highscore-button:hover, p:hover {
+    cursor: pointer;
+}
+
+.start-button:active, .view-highscore-button:active, p:active {
+    transform: translateY(3px); 
+}
+
+.questions-field {
     grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
 }
 
 .time {
-    grid-column: 1 / 2;
+    grid-column: 1 / -1;
     text-align: center;
 }
 
-.view-highscore {
-    text-align: center;
+.view-highscore-button {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
 }
 
-.time, .view-highscore {
-   
+.options-field {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin: 10px auto;
+    padding: 10px;
+    width: 60%;
+    border: 2px solid #4287f5;
+    border-radius: 15px;
+    text-align: center;
 }
 
 .decoration {
     grid-column: 1 / -1;
 }
 
-.decoration { 
-    
-}
-
 .decoration img {
     display: block;
-    width: 25%;
+    width: 50%;
     height: 400px;
-    /* object-fit: cover; */
     margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (min-width: 678px) {
+    .page {
+        margin-top: 5%;
+        grid-template-rows: 0.7fr 0.7fr 3fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .start-button {
+        grid-column: 1 / 2;
+        align-self: center;
+        justify-self: center;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 15px;
+    }
+
+    .view-highscore-button {
+        grid-column: 2 / -1;
+    }
+    
+    .questions-field {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        align-self: center;
+        justify-self: center;
+    }
+    .time {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .decoration {
+        grid-column: 2 / -1;
+    }
+
+    .decoration img {
+        display: block;
+        width: 55%;
+        height: 400px;
+        margin: 0 auto;
+    }
+
 }
 
 
