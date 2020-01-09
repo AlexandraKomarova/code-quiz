@@ -3,6 +3,7 @@ body {
 }
 
 .page {
+    margin-top: 7%;
     display: grid;
     grid-template-rows: 1fr 2fr 50px;
     grid-template-columns: 1fr 1fr;
@@ -29,6 +30,13 @@ body {
     grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    width: 80%;
+    margin: auto;
 }
 
 .time {
@@ -76,7 +84,6 @@ p {
 
 @media screen and (min-width: 678px) {
     .page {
-        margin-top: 5%;
         grid-template-rows: 0.7fr 0.7fr 3fr;
         grid-template-columns: 1fr 1fr;
     }
