@@ -1,0 +1,55 @@
+body {
+    font-family: 'Righteous', cursive;
+}
+
+.page {
+    display: grid;
+    grid-template-rows: 1fr 2fr 50px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.start {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.questions {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+}
+
+.time {
+    grid-column: 1 / 2;
+    text-align: center;
+}
+
+.view-highscore {
+    text-align: center;
+}
+
+.time, .view-highscore {
+   
+}
+
+.decoration {
+    grid-column: 1 / -1;
+}
+
+.decoration { 
+    
+}
+
+.decoration img {
+    display: block;
+    width: 25%;
+    height: 400px;
+    /* object-fit: cover; */
+    margin: 0 auto;
+}
+
+
