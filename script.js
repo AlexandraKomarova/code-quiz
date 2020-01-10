@@ -19,31 +19,35 @@ function setTimer(){
 }
 
 
-function displayQuestions (){
+function displayQuestion(){
     question.textContent = questions[questionObjectChoices].title;
     displayChoices();
     }
-    function displayChoices(){
-        for (var i = 0; i < questions[questionObjectChoices].choices.length; i++){
-            var option = document.createElement("p");
-            option.classList.add('question-option');
-            option.textContent = questions[questionObjectChoices].choices[i];
-            optionsField.appendChild(option);
-        }
-    var questionOptions = document.querySelector(".question-option");
 
-    questionOptions.addEventListener("click", function() {
-        questionObjectChoices++
-        question.textContent = questions[questionObjectChoices].title;
-        optionsField.textContent = ""
-        displayChoices();
-    });
+function displayChoices(){
+    for (var i = 0; i < questions[questionObjectChoices].choices.length; i++){
+        var option = document.createElement("p");
+        option.classList.add('question-option');
+        option.textContent = questions[questionObjectChoices].choices[i];
+        optionsField.appendChild(option);
+    }
+}
+
+function updateQuestion(){
+    questionObjectChoices++
+    question.textContent = questions[questionObjectChoices].title;
+    optionsField.textContent = ""
+    displayChoices();
 }
 
 startButton.addEventListener ("click", function(){
     setTimer();
-    displayQuestions();
-})
+    displayQuestion();
+});
+optionsField.addEventListener("click", function(){
+    updateQuestion();
+});
+
 
 
 
