@@ -1,3 +1,5 @@
+var page = document.querySelector(".page");
+var playAgain = document.querySelector(".play-again");
 var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
@@ -15,6 +17,11 @@ if (!questions[questionObject]){
 startButton.addEventListener ("click", function(){
     setTimer();
     displayQuestion();
+    startButton.parentNode.removeChild(startButton);
+    // var playAgainButton = document.createElement("p");
+    // playAgainButton.textContent = "play again"
+    // playAgain.appendChild(playAgainButton);
+
 });
 
 function gameOver(){
@@ -111,7 +118,7 @@ optionsField.addEventListener("click", function(event){
             }, 1000);
         }
         else {
-            quizTime -= 15
+            quizTime -= 3
             clearQuestionAndOptions()
             // display incorrect
             var incorrect = document.createElement("h3");
@@ -129,11 +136,11 @@ optionsField.addEventListener("click", function(event){
 })
     
 
-// show correct answer and then display new question
 
-// end game when there's no more questions
 
-// get rid of start quiz button when game starts 
+
+
+
 
 // when start quiz is cliked creates the choices again
 
