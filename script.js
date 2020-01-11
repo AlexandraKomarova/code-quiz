@@ -2,9 +2,10 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
-var quizTime = 40; 
+var quizTime = 5; 
 var questionObject = 0;
 var quizEnd = false;
+var score = quizTime
 
 if (!questions[questionObject]){
     console.log("game over")
@@ -23,22 +24,29 @@ function gameOver(){
     var gameover = document.createElement("h3");
     gameover.textContent = "Game Over!"
     optionsField.appendChild(gameover);
-    var scoreEl = document.createElement("h3");
-    scoreEl.textContent = quizTime
-    optionsField.appendChild(scoreEl);
+    // var scoreEl = document.createElement("h3");
+    // scoreEl.textContent = quizTime
+    // optionsField.appendChild(scoreEl);
 }
 
 // FIX DELAY
 
+
 function setTimer(){
     timer.textContent = quizTime;
+    
     var timerInterval = setInterval(function(){
+        
         timer.textContent = quizTime--;
-        var score = quizTime--
-        // console.log(score)
+        
         if (quizTime === 0 || !questions[questionObject]) {
+            score = quizTime
+            console.log(score)
             clearInterval(timerInterval);
             gameOver()
+            var scoreEl = document.createElement("h3");
+            scoreEl.textContent = "Your score is " + score
+            optionsField.appendChild(scoreEl);
         }
     }, 1000)
 }
@@ -79,6 +87,8 @@ function updateQuestion(){
 // SUBTRACT FROM TIMER WHEN ASNWER IS WRONG
 
 optionsField.addEventListener("click", function(event){
+    score = quizTime
+    console.log(score)
     // clear question and options
     function clearQuestionAndOptions(){
         question.textContent = "";
