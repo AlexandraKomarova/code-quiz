@@ -4,14 +4,18 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
-var quizTime = 10; 
+var quizTime = 5; 
 var questionObject = 0;
 var quizEnd = false;
 var score = quizTime
 
-if (!questions[questionObject]){
-    console.log("game over")
-}
+// FIX TIMER AND SCORE
+
+// COLLECT USER'S INITIALS FROM INPUT FIELD
+
+// SAVE THEM AND SCORE IN LOCAL STORAGE
+
+// VIEW HIGHSCORES SHOULD DISPLAY INITIALS AND SCORE
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
@@ -34,12 +38,19 @@ function gameOver(){
     var scoreEl = document.createElement("h3");
     scoreEl.textContent = "Your score is " + score
     optionsField.appendChild(scoreEl);
+    var inputEl = document.createElement("input");
+    inputEl.setAttribute("placeholder", "enter your initials here")
+    optionsField.appendChild(inputEl);
+    var save = document.createElement("div");
+    save.textContent = "save";
+    save.setAttribute("class", "save-btn")
+    optionsField.appendChild(save);
     // var scoreEl = document.createElement("h3");
     // scoreEl.textContent = quizTime
     // optionsField.appendChild(scoreEl);
 }
 
-// FIX DELAY
+// FIX DELAY BETWEEN 10 AND 9
 
 
 function setTimer(){

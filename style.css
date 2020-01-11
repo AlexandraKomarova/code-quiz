@@ -18,11 +18,11 @@ body {
     border-radius: 15px;
 }
 
-.start-button:hover, .view-highscore-button:hover, p:hover {
+.start-button:hover, .view-highscore-button:hover, p:hover, .save-btn {
     cursor: pointer;
 }
 
-.start-button:active, .view-highscore-button:active, p:active {
+.start-button:active, .view-highscore-button:active, p:active, .save-btn:active {
     transform: translateY(3px); 
 }
 
@@ -48,6 +48,14 @@ body {
     grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.save-btn {
+    width: 20%;
+    margin: 10px auto;
     padding: 10px;
     border: 2px solid black;
     border-radius: 15px;
@@ -83,6 +91,17 @@ p {
     display: none;
 }
 
+input {
+    padding: 10px;
+    border: 2px solid #4287f5;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 450;
+}
+
+input:focus {
+    outline: none;
+}
 @media screen and (min-width: 678px) {
     .page {
         grid-template-rows: minmax(100px,0.7fr) minmax(100px,0.7fr) 3fr;
