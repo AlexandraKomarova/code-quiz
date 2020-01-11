@@ -2,7 +2,7 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
-var quizTime = 5; 
+var quizTime = 10; 
 var questionObject = 0;
 var quizEnd = false;
 var score = quizTime
@@ -40,7 +40,7 @@ function setTimer(){
         timer.textContent = quizTime--;
         
         if (quizTime === 0 || !questions[questionObject]) {
-            score = quizTime
+            score = quizTime+=3
             console.log(score)
             clearInterval(timerInterval);
             gameOver()
