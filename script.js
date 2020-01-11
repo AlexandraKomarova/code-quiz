@@ -36,7 +36,7 @@ function gameOver(){
     gameover.textContent = "You finished the quiz!"
     optionsField.appendChild(gameover);
     var scoreEl = document.createElement("h3");
-    scoreEl.textContent = "Your score is " + score
+    scoreEl.textContent = "Your score is " + quizTime
     optionsField.appendChild(scoreEl);
     var inputEl = document.createElement("input");
     inputEl.setAttribute("placeholder", "enter your initials here")
@@ -136,7 +136,7 @@ optionsField.addEventListener("click", function(event){
             }, 1000);
         }
         else {
-            // if (quizTime > 0) {
+            // if (quizTime > 3) {
                 quizTime -= 3
             // }
 
