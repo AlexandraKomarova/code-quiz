@@ -2,8 +2,13 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
-var quizTime = 5000; 
+var quizTime = 40; 
 var questionObject = 0;
+var quizEnd = false;
+
+if (!questions[questionObject]){
+    console.log("game over")
+}
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
@@ -18,16 +23,22 @@ function gameOver(){
     var gameover = document.createElement("h3");
     gameover.textContent = "Game Over!"
     optionsField.appendChild(gameover);
+    var scoreEl = document.createElement("h3");
+    scoreEl.textContent = quizTime
+    optionsField.appendChild(scoreEl);
 }
+
+// FIX DELAY
 
 function setTimer(){
     timer.textContent = quizTime;
     var timerInterval = setInterval(function(){
         timer.textContent = quizTime--;
-
-        if (quizTime === 0) {
+        var score = quizTime--
+        // console.log(score)
+        if (quizTime === 0 || !questions[questionObject]) {
             clearInterval(timerInterval);
-           gameOver()
+            gameOver()
         }
     }, 1000)
 }
@@ -35,7 +46,6 @@ function setTimer(){
 function displayQuestion(){
     question.textContent = questions[questionObject].title;
     displayChoices();
-    var allChoices = document.querySelectorAll("p")
 }
 
 function displayChoices(){
@@ -47,8 +57,9 @@ function displayChoices(){
         var option = document.createElement("p");
         // to each <p> "data" attribute id added and its value is each element in choices array
         option.setAttribute("data", options[i])
-        // update display by adding 
+        // update display by adding each element of choices array as text of option
         option.textContent = options[i];
+        // add option <p> to optionsField <div>
         optionsField.appendChild(option);
     }
 }
@@ -68,13 +79,16 @@ function updateQuestion(){
 // SUBTRACT FROM TIMER WHEN ASNWER IS WRONG
 
 optionsField.addEventListener("click", function(event){
+    // clear question and options
+    function clearQuestionAndOptions(){
+        question.textContent = "";
+        optionsField.textContent = "";
+    }
     if (event.target.matches("p")){
         var userChoice = event.target.attributes.data.value
         var answer = questions[questionObject].answer
         if(userChoice === answer){
-           // clear options field
-            question.textContent = "";
-            optionsField.textContent = "";
+            clearQuestionAndOptions()
            // display correct
             var correct = document.createElement("h3");
             correct.textContent = "Correct!"
@@ -87,9 +101,8 @@ optionsField.addEventListener("click", function(event){
             }, 1000);
         }
         else {
-            // clear options field
-            question.textContent = "";
-            optionsField.textContent = "";
+            quizTime -= 15
+            clearQuestionAndOptions()
             // display incorrect
             var incorrect = document.createElement("h3");
             incorrect.textContent = "Incorrect:("
