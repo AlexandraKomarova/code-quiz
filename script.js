@@ -4,7 +4,7 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
-var quizTime = 5; 
+var quizTime = 15; 
 var questionObject = 0;
 var quizEnd = false;
 var score = quizTime
@@ -60,9 +60,14 @@ function setTimer(){
         
         timer.textContent = quizTime--;
         
-        if (quizTime === 0 || !questions[questionObject]) {
+        if (quizTime < 0){
+            quizTime = 0
+        }
+
+        if (quizTime <= 0 || !questions[questionObject]) {
             // SHOULD I INCLUDE SET INTERVAL OR NO?
-            score = quizTime+=2
+
+            score = quizTime
             console.log(score)
             clearInterval(timerInterval);
             gameOver()
@@ -106,8 +111,8 @@ function updateQuestion(){
 
 
 optionsField.addEventListener("click", function(event){
-    score = quizTime
-    console.log(score)
+    // score = quizTime
+    // console.log(score)
     // clear question and options
     function clearQuestionAndOptions(){
         question.textContent = "";
@@ -126,11 +131,16 @@ optionsField.addEventListener("click", function(event){
             setTimeout(function(){
                 if (quizTime > 0) {
                     updateQuestion()
+                    quizTime++
                 }
             }, 1000);
         }
         else {
-            quizTime -= 3
+            // if (quizTime > 0) {
+                quizTime -= 3
+            // }
+
+
             clearQuestionAndOptions()
             // display incorrect
             var incorrect = document.createElement("h3");
@@ -140,6 +150,7 @@ optionsField.addEventListener("click", function(event){
             setTimeout(function(){
                 if (quizTime > 0) {
                     updateQuestion()
+                    quizTime++
                 }
             }, 1000);
         }    
