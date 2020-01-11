@@ -17,7 +17,7 @@ if (!questions[questionObject]){
 startButton.addEventListener ("click", function(){
     setTimer();
     displayQuestion();
-    startButton.parentNode.removeChild(startButton);
+    // startButton.parentNode.removeChild(startButton);
     // var playAgainButton = document.createElement("p");
     // playAgainButton.textContent = "play again"
     // playAgain.appendChild(playAgainButton);
@@ -25,12 +25,15 @@ startButton.addEventListener ("click", function(){
 });
 
 function gameOver(){
-    timer.textContent = "0";
+    timer.textContent = "";
     question.textContent = "";
     optionsField.textContent = "";
     var gameover = document.createElement("h3");
-    gameover.textContent = "Game Over!"
+    gameover.textContent = "You finished the quiz!"
     optionsField.appendChild(gameover);
+    var scoreEl = document.createElement("h3");
+    scoreEl.textContent = "Your score is " + score
+    optionsField.appendChild(scoreEl);
     // var scoreEl = document.createElement("h3");
     // scoreEl.textContent = quizTime
     // optionsField.appendChild(scoreEl);
@@ -47,13 +50,11 @@ function setTimer(){
         timer.textContent = quizTime--;
         
         if (quizTime === 0 || !questions[questionObject]) {
-            score = quizTime+=3
+            // SHOULD I INCLUDE SET INTERVAL OR NO?
+            score = quizTime+=2
             console.log(score)
             clearInterval(timerInterval);
             gameOver()
-            var scoreEl = document.createElement("h3");
-            scoreEl.textContent = "Your score is " + score
-            optionsField.appendChild(scoreEl);
         }
     }, 1000)
 }
@@ -91,7 +92,7 @@ function updateQuestion(){
     } 
 }
 
-// SUBTRACT FROM TIMER WHEN ASNWER IS WRONG
+
 
 optionsField.addEventListener("click", function(event){
     score = quizTime
