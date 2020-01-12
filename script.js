@@ -22,15 +22,6 @@ startButton.addEventListener ("click", function(){
     displayQuestion();
 });
 
-viewHighScores.addEventListener("click", function(){
-    endScreen.textContent = "";
-
-    // DISPLAYS THE SCORE
-    // var scoreEl = document.createElement("h3");
-    // scoreEl.textContent = "hi " + quizTime
-    // optionsField.appendChild(scoreEl);
-});
-
 function gameOver(){
     timer.textContent = "";
     question.textContent = "";
@@ -40,18 +31,35 @@ function gameOver(){
 }
 var users = [];
 var currentId = 0;
+// capture user's input
+var initials = initialsEl.value;
+
 
 saveButton.addEventListener("click", function(){
-    console.log("clicked")
-    // capture user's input
-    var initials = initialsEl.value;
+    initials = initialsEl.value;
+    // check that initials have been cpatured
     console.log(initials)
     // push user's object that has user object into users array
     users.push({ initials: initials });
     console.log(users)
 })
 
+viewHighScores.addEventListener("click", function(){
+    endScreen.textContent = "";
+    // create users <ul> to add user <li> to
+    var usersUl = document.createElement("ul");
+    endScreen.append(usersUl)
+    // create user <li>
+    var li = document.createElement("li");
+    li.id = users.length;
+    li.innerHTML = initials;
+    usersUl.append(li);
 
+    // DISPLAYS THE SCORE
+    // var scoreEl = document.createElement("h3");
+    // scoreEl.textContent = "hi " + quizTime
+    // optionsField.appendChild(scoreEl);
+});
 
 // ========= SAVE BUTTON ===========
 
