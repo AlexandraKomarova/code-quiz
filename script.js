@@ -11,7 +11,7 @@ var viewHighScores = document.querySelector(".view-highscore-button");
 var quizTime = 15; 
 var questionObject = 0;
 
-// SAVE THEM AND THE SCORE IN LOCAL STORAGE
+// SAVE USER OBJECT WITH NAME: INITIALS, SCORE: SCORE TO LOCAL STORAGE
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
@@ -36,6 +36,7 @@ var initials = initialsEl.value;
 
 saveButton.addEventListener("click", function(){
     initials = initialsEl.value;
+    localStorage.setItem("initals", initials);
     // check that initials have been cpatured
     console.log(initials)
     // push user's object that has user object into users array
