@@ -2,6 +2,7 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
+var questionsField = document.querySelector(".questions-field");
 var endScreen = document.querySelector(".end-screen");
 var score = document.querySelector("#score");
 var initialsEl = document.querySelector("#initials");
@@ -9,10 +10,6 @@ var saveButton = document.querySelector("#save-button");
 var viewHighScores = document.querySelector(".view-highscore-button");
 var quizTime = 15; 
 var questionObject = 0;
-
-// COLLECT USER'S INITIALS FROM INPUT FIELD
-
-// FIX VIEW HIGH SCORES
 
 // SAVE THEM AND THE SCORE IN LOCAL STORAGE
 
@@ -29,11 +26,13 @@ function gameOver(){
     endScreen.classList.remove("hide")
     score.textContent = quizTime;
 }
+
 var users = [];
 var currentId = 0;
 // capture user's input
 var initials = initialsEl.value;
 
+// ========= SAVE BUTTON ===========
 
 saveButton.addEventListener("click", function(){
     initials = initialsEl.value;
@@ -44,8 +43,11 @@ saveButton.addEventListener("click", function(){
     console.log(users)
 })
 
+// ========= VIEW HIGH SCORES BUTTON ===========
+
 viewHighScores.addEventListener("click", function(){
     endScreen.textContent = "";
+    questionsField.textContent = "";
     // create users <ul> to add user <li> to
     var usersUl = document.createElement("ul");
     endScreen.append(usersUl)
@@ -56,17 +58,6 @@ viewHighScores.addEventListener("click", function(){
     usersUl.append(li);
 });
 
-// ========= SAVE BUTTON ===========
-
-function saveUser(event) {
-    
-    var li = document.createElement("li");
-    li.id = users.length;
-    li.innerHTML = initials;
-    console.log(initials)
-    users.push({ name: name });
-    usersEl.append(li);
-}
 
 
 // FIX DELAY BETWEEN 10 AND 9
@@ -82,9 +73,8 @@ function setTimer(){
         }
 
         if (quizTime <= 0 || !questions[questionObject]) {
-            // SHOULD I INCLUDE SET INTERVAL OR NO?
-
             score = quizTime
+            localStorage.setItem("score", quizTime);
             console.log(score)
             clearInterval(timerInterval);
             gameOver()
