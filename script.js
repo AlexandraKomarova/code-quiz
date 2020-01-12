@@ -11,7 +11,12 @@ var viewHighScores = document.querySelector(".view-highscore-button");
 var quizTime = 15; 
 var questionObject = 0;
 
+// ============= TO-DO LIST TO FINISH THE PROJECT =====================
+// ====================================================================
+
+// SO FAR SAVING INITILAS AND SCORE TO LOCAL STORAGE SEPARATELY 
 // SAVE USER OBJECT WITH NAME: INITIALS, SCORE: SCORE TO LOCAL STORAGE
+// CLEAN UP CODE 
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
