@@ -12,15 +12,20 @@
     <div class="page">
         <!-- <div class="play-again"></div> -->
         <div class="start-button">start quiz</div>
-        <div class="view-highscore-button">view highscores</div>
+        <div class="view-highscore-button">view high scores</div>
         <div class="time">Time: <span id="timer">0</span></div>
         <div class="questions-field">
             <h3 class="title">Wellcome to JS Coding Quiz Challenge! 
                 <br>
                 <br>
                 Click Start Quiz to begin. Try to answer questions as quick as possible. Keep in mind that incorrect answers will penalize your score by 10 seconds.</h3>
-            <div class='options-field'>
-            </div>
+            <div class='options-field'></div>
+        </div>
+        <div class="end-screen hide">
+            <h3>You finished the quiz!</h3>
+            <h3>Your score is <span id="score">0</span></h3>
+            <input type="text" placeholder="enter your initials here" id="initials">
+            <button id="save-button">save</button>
         </div>
         <div class="decoration">
             <img src="img.svg" alt="">

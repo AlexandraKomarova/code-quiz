@@ -1,54 +1,63 @@
-var page = document.querySelector(".page");
-var playAgain = document.querySelector(".play-again");
 var timer = document.querySelector("#timer");
 var startButton = document.querySelector(".start-button");
 var question = document.querySelector(".title");
 var optionsField = document.querySelector(".options-field");
+var endScreen = document.querySelector(".end-screen");
+var score = document.querySelector("#score");
+var initialsEl = document.querySelector("#initials");
+
+var viewHighScores = document.querySelector(".view-highscore-button");
 var quizTime = 15; 
 var questionObject = 0;
-var quizEnd = false;
-var score = quizTime
+// var score = quizTime
+
+var users = [];
+var currentId = 0;
+
 
 // FIX TIMER AND SCORE
 
 // COLLECT USER'S INITIALS FROM INPUT FIELD
 
-// SAVE THEM AND SCORE IN LOCAL STORAGE
+//FIX VIEW HIGH SCORES
 
-// VIEW HIGHSCORES SHOULD DISPLAY INITIALS AND SCORE
+// SAVE THEM AND THE SCORE IN LOCAL STORAGE
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
     setTimer();
     displayQuestion();
-    // startButton.parentNode.removeChild(startButton);
-    // var playAgainButton = document.createElement("p");
-    // playAgainButton.textContent = "play again"
-    // playAgain.appendChild(playAgainButton);
+});
 
+viewHighScores.addEventListener("click", function(){
+    optionsField.textContent = "";
+
+    // DISPLAYS THE SCORE
+    // var scoreEl = document.createElement("h3");
+    // scoreEl.textContent = "hi " + quizTime
+    // optionsField.appendChild(scoreEl);
 });
 
 function gameOver(){
     timer.textContent = "";
     question.textContent = "";
     optionsField.textContent = "";
-    var gameover = document.createElement("h3");
-    gameover.textContent = "You finished the quiz!"
-    optionsField.appendChild(gameover);
-    var scoreEl = document.createElement("h3");
-    scoreEl.textContent = "Your score is " + quizTime
-    optionsField.appendChild(scoreEl);
-    var inputEl = document.createElement("input");
-    inputEl.setAttribute("placeholder", "enter your initials here")
-    optionsField.appendChild(inputEl);
-    var save = document.createElement("div");
-    save.textContent = "save";
-    save.setAttribute("class", "save-btn")
-    optionsField.appendChild(save);
-    // var scoreEl = document.createElement("h3");
-    // scoreEl.textContent = quizTime
-    // optionsField.appendChild(scoreEl);
+    endScreen.classList.remove("hide")
+    score.textContent = quizTime;
 }
+
+// ========= SAVE BUTTON ===========
+
+    // function saveUser(event) {
+    //     event.preventDefault();
+    //     var initials = inputEl.value;
+    //     var li = document.createElement("li");
+    //     li.id = user.length;
+    //     li.innerHTML = initials;
+    //     console.log(initials)
+    //     users.push({ name: name });
+    //     usersListEl.append(li);
+    // }
 
 // FIX DELAY BETWEEN 10 AND 9
 
@@ -157,6 +166,29 @@ optionsField.addEventListener("click", function(event){
     }
      
 })
+
+
+
+// var gameover = document.createElement("h3");
+//     gameover.textContent = "You finished the quiz!"
+//     optionsField.appendChild(gameover);
+//     var scoreEl = document.createElement("h3");
+//     scoreEl.textContent = "Your score is " + quizTime
+//     optionsField.appendChild(scoreEl);
+//     var inputEl = document.createElement("input");
+//     inputEl.setAttribute("placeholder", "enter your initials here")
+//     inputEl.setAttribute("class", "initials")
+//     optionsField.appendChild(inputEl);
+//     // var userInitials = initialsEl.value
+//     // console.log(initialsEl)
+//     var save = document.createElement("div");
+//     save.textContent = "save";
+//     save.setAttribute("class", "save-btn")
+//     optionsField.appendChild(save);
+//     var saveBtn = document.querySelector("save-btn")
+//     saveBtn.addEventListener("click", function(){
+//         console.log("save is clicked")
+//     })
     
 
 

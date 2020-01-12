@@ -9,6 +9,28 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
+.end-screen {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.hide {
+    display: none;
+}
+
+#save-button {
+    width: 30%;
+    font-size: 14px;
+    font-weight: 450;
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
 .start-button {
     grid-column: 1 / -1;
     align-self: center;
@@ -18,11 +40,11 @@ body {
     border-radius: 15px;
 }
 
-.start-button:hover, .view-highscore-button:hover, p:hover, .save-btn {
+.start-button:hover, .view-highscore-button:hover, p:hover, #save-button:hover {
     cursor: pointer;
 }
 
-.start-button:active, .view-highscore-button:active, p:active, .save-btn:active {
+.start-button:active, .view-highscore-button:active, p:active, #save-button:active {
     transform: translateY(3px); 
 }
 
@@ -99,7 +121,7 @@ input {
     font-weight: 450;
 }
 
-input:focus {
+input:focus, button:focus {
     outline: none;
 }
 @media screen and (min-width: 678px) {
