@@ -52,21 +52,13 @@ viewHighScores.addEventListener("click", function(){
     // create user <li>
     var li = document.createElement("li");
     li.id = users.length;
-    li.innerHTML = initials;
+    li.innerHTML = initials + " " + quizTime;
     usersUl.append(li);
-
-    // DISPLAYS THE SCORE
-    // var scoreEl = document.createElement("h3");
-    // scoreEl.textContent = "hi " + quizTime
-    // optionsField.appendChild(scoreEl);
 });
 
 // ========= SAVE BUTTON ===========
 
 function saveUser(event) {
-    event.preventDefault();
-    var usersEl = document.createElement("ul");
-    optionsField.append(usersEl)
     
     var li = document.createElement("li");
     li.id = users.length;
