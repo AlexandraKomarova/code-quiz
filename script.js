@@ -23,7 +23,7 @@ startButton.addEventListener ("click", function(){
 });
 
 viewHighScores.addEventListener("click", function(){
-    optionsField.textContent = "";
+    endScreen.textContent = "";
 
     // DISPLAYS THE SCORE
     // var scoreEl = document.createElement("h3");
@@ -49,7 +49,6 @@ saveButton.addEventListener("click", function(){
     // push user's object that has user object into users array
     users.push({ initials: initials });
     console.log(users)
-
 })
 
 
@@ -125,8 +124,6 @@ function updateQuestion(){
         gameOver()
     } 
 }
-
-
 
 optionsField.addEventListener("click", function(event){
     // score = quizTime
