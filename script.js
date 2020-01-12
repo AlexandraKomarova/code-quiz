@@ -14,9 +14,21 @@ var questionObject = 0;
 // ============= TO-DO LIST TO FINISH THE PROJECT =====================
 // ====================================================================
 
+// FUNCTIONALITY:
+// *************
+// HIDE START-BUTTON WHEN GAME STARTS
+// HIDE VIEW HIGHSCORES WHEN GAME STARTS
+// BRING BOTH BACK IN THE END, BUT CHANGE TEXT IN START BUTTON TO PLAY AGAIN
+
+// LOCAL STORAGE:
+// **************
 // SO FAR SAVING INITILAS AND SCORE TO LOCAL STORAGE SEPARATELY 
 // SAVE USER OBJECT WITH NAME: INITIALS, SCORE: SCORE TO LOCAL STORAGE
-// CLEAN UP CODE 
+
+// THE LOOKS:
+// **********
+// CLEAN UP CODE
+// CHECK UX, UI, PLAY WITH THAT COMPUTER IMAGE, PROBABLY INVERT THE COLORS
 
 // when start quiz is clicked set timer and display question
 startButton.addEventListener ("click", function(){
@@ -37,7 +49,7 @@ var currentId = 0;
 // capture user's input
 var initials = initialsEl.value;
 
-// ========= SAVE BUTTON ===========
+// ============= SAVE BUTTON ===============
 
 saveButton.addEventListener("click", function(){
     initials = initialsEl.value;
@@ -48,6 +60,15 @@ saveButton.addEventListener("click", function(){
     users.push({ initials: initials });
     console.log(users)
 })
+
+// CREATE USER OBJCET FROM SUBMISSION 
+
+// var user = {
+//     firstName: firstNameInput.value.trim(),
+//     lastName: lastNameInput.value.trim(),
+//     email: emailInput.value.trim(),
+//     password: passwordInput.value.trim()
+//   };
 
 // ========= VIEW HIGH SCORES BUTTON ===========
 
