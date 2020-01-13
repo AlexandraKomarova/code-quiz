@@ -49,26 +49,23 @@ var currentId = 0;
 // capture user's input
 var initials = initialsEl.value;
 
+
 // ============= SAVE BUTTON ===============
 
 saveButton.addEventListener("click", function(){
     initials = initialsEl.value;
-    localStorage.setItem("initals", initials);
-    // check that initials have been cpatured
-    console.log(initials)
     // push user's object that has user object into users array
     users.push({ initials: initials });
     console.log(users)
+    var user = {
+        initials: initialsEl.value.trim(),
+        score: quizTime
+      };
+    localStorage.setItem("user", JSON.stringify(user));
 })
 
 // CREATE USER OBJCET FROM SUBMISSION 
 
-// var user = {
-//     firstName: firstNameInput.value.trim(),
-//     lastName: lastNameInput.value.trim(),
-//     email: emailInput.value.trim(),
-//     password: passwordInput.value.trim()
-//   };
 
 // ========= VIEW HIGH SCORES BUTTON ===========
 
@@ -101,7 +98,6 @@ function setTimer(){
 
         if (quizTime <= 0 || !questions[questionObject]) {
             score = quizTime
-            localStorage.setItem("score", quizTime);
             console.log(score)
             clearInterval(timerInterval);
             gameOver()
