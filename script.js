@@ -21,9 +21,8 @@ var questionObject = 0;
 // BRING BOTH BACK IN THE END, BUT CHANGE TEXT IN START BUTTON TO PLAY AGAIN
 
 // LOCAL STORAGE:
-// **************
-// SO FAR SAVING INITILAS AND SCORE TO LOCAL STORAGE SEPARATELY 
-// SAVE USER OBJECT WITH NAME: INITIALS, SCORE: SCORE TO LOCAL STORAGE
+// ************** 
+// GET INFO FROM LOCAL STORAGE AND USE THAT TO RENDER END SCREEN
 
 // THE LOOKS:
 // **********
@@ -44,28 +43,32 @@ function gameOver(){
     score.textContent = quizTime;
 }
 
-var users = [];
+
+var users = []
+users = JSON.parse(localStorage.getItem("users"))
+console.log(users)
+var user = {
+    initials: initials,
+    score: quizTime
+  };
 var currentId = 0;
 // capture user's input
-var initials = initialsEl.value;
+var initials = initialsEl.value.trim();
+
 
 
 // ============= SAVE BUTTON ===============
 
 saveButton.addEventListener("click", function(){
-    initials = initialsEl.value;
-    // push user's object that has user object into users array
-    users.push({ initials: initials });
-    console.log(users)
-    var user = {
-        initials: initialsEl.value.trim(),
+    initials = initialsEl.value
+    user = {
+        initials: initials,
         score: quizTime
       };
-    localStorage.setItem("user", JSON.stringify(user));
-})
-
-// CREATE USER OBJCET FROM SUBMISSION 
-
+    users.push(user);
+    console.log(users)
+    localStorage.setItem("users", JSON.stringify(users));
+});
 
 // ========= VIEW HIGH SCORES BUTTON ===========
 
@@ -76,13 +79,19 @@ viewHighScores.addEventListener("click", function(){
     var usersUl = document.createElement("ul");
     endScreen.append(usersUl)
     // create user <li>
-    var li = document.createElement("li");
-    li.id = users.length;
-    li.innerHTML = initials + " " + quizTime;
-    usersUl.append(li);
+    for (var i = 0; i < users.length; i++){
+        var li = document.createElement("li");
+        li.innerHTML = users[i].initials + " " + users[i].score;
+        usersUl.append(li);
+        console.log(users[i].initials)
+    }
+    
+    // li.id = users.length;
+
+    
+    
+    // console.log(users[1].initials)
 });
-
-
 
 // FIX DELAY BETWEEN 10 AND 9
 function setTimer(){
