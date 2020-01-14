@@ -5,7 +5,7 @@ body {
 .page {
     margin-top: 7%;
     display: grid;
-    grid-template-rows: minmax(50px, 1fr) minmax(50px, 2fr) 50px;
+    grid-template-rows: 1fr minmax(50px, 2fr) 50px;
     grid-template-columns: 1fr 1fr;
 }
 
