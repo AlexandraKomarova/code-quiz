@@ -12,30 +12,36 @@ var saveButton = document.querySelector("#save-button");
 var viewHighScores = document.querySelector(".view-highscore-button");
 var quizTime = 15; 
 var questionObject = 0;
+var playAgainButton = document.querySelector(".play-again")
 
 // ============ RENDERING END SCREEN =============
 
 function gameOver(){
-    time.textContent = "";
-    optionsField.textContent = ""
-    endScreen.classList.remove("hide")
+    time.classList.add("hide")
+    optionsField.classList.add("hide");
+    endScreen.classList.remove("hide");
     score.textContent = quizTime;
+    questionObject = 0;
+    quizTime = 15;
+    playAgainButton.classList.remove("hide");
 }
 
 // ========= POPULATE USERS ARRAY WITH DATA FROM LOCAL STORAGE ======
 
+var localStorageUsers = JSON.parse(localStorage.getItem("users"))
 var users = []
-users = JSON.parse(localStorage.getItem("users"))
+
+if (localStorageUsers) {
+    users = localStorageUsers
+}
+
+
 console.log(users)
 var user = {
     initials: initials,
     score: quizTime
   };
-var currentId = 0;
-// capture user's input
 var initials = initialsEl.value.trim();
-
-
 
 // ============= SAVE BUTTON ===============
 
@@ -49,7 +55,7 @@ saveButton.addEventListener("click", function(){
     console.log(users)
     localStorage.setItem("users", JSON.stringify(users));
 });
-
+//localStorage.setItem("users", []);
 // ========= VIEW HIGH SCORES BUTTON ===========
 
 viewHighScores.addEventListener("click", function(){
@@ -68,14 +74,22 @@ viewHighScores.addEventListener("click", function(){
     }
 });
 
+// ============= PLAY AGAIN BUTTON ===============
+
+playAgainButton.addEventListener("click", function(){
+    
+    endScreen.classList.add('hide');
+    time.classList.remove("hide")
+})
+
 // ============= START QUIZ BUTTON ===============
 
 startButton.addEventListener ("click", function(){
     setTimer();
     displayQuestion();
-    startButton.textContent = ""
-    startButton.classList.remove("start-button")
-    // startButton.style.display = "none"
+    //startButton.textContent = ""
+    //startButton.classList.remove("start-button")
+    startButton.style.display = "none"
 });
 
 // =============== SET TIMER ===================

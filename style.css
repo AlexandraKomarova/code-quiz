@@ -31,7 +31,7 @@ body {
     border-radius: 15px;
 }
 
-.start-button {
+.start-button, .play-again {
     grid-column: 1 / -1;
     align-self: center;
     justify-self: center;
@@ -40,11 +40,11 @@ body {
     border-radius: 15px;
 }
 
-.start-button:hover, .view-highscore-button:hover, p:hover, #save-button:hover {
+.start-button:hover, .view-highscore-button:hover, p:hover, #save-button:hover, .play-again:hover {
     cursor: pointer;
 }
 
-.start-button:active, .view-highscore-button:active, p:active, #save-button:active {
+.start-button:active, .view-highscore-button:active, p:active, #save-button:active, .play-again:active {
     transform: translateY(3px); 
 }
 
@@ -132,7 +132,7 @@ input:focus, button:focus {
 }
 @media screen and (min-width: 678px) {
     .page {
-        grid-template-rows: minmax(100px,0.7fr) minmax(100px,0.7fr) 3fr;
+        grid-template-rows: minmax(50px,0.7fr) minmax(50px,0.7fr) 3fr;
         grid-template-columns: 1fr 1fr;
     }
 
@@ -145,11 +145,24 @@ input:focus, button:focus {
         border-radius: 15px;
     }
 
+    .play-again {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
     .view-highscore-button {
         grid-column: 2 / -1;
+        grid-row: 1 / 2;
     }
     
     .questions-field {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .end-screen {
         grid-column: 1 / 2;
         grid-row: 2 / 4;
         align-self: center;
@@ -164,6 +177,7 @@ input:focus, button:focus {
 
     .decoration {
         grid-column: 2 / -1;
+        grid-row: 3 / -1;
     }
 
     .decoration img {
